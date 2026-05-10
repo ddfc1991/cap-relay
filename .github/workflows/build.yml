@@ -19,20 +19,17 @@ jobs:
           channel: 'stable'
           cache: true
       
-      - name: Install dependencies
-        run: flutter pub get
-      
-      - name: Run Gradle directly
+      - name: Create local.properties
         run: |
-          cd android
-          ./gradlew assembleRelease --no-daemon --stacktrace 2>&1 | tail -50
+          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
+          echo "flutter.sdk=$FLUTTER_ROOT" >> android/local.properties
       
-      - name: Find any APKs
-        run: find . -name "*.apk" -type f 2>/dev/null
+      - name: Build APK
+        run: flutter build apk --release
       
-      - name: Upload if exists
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: apks
-          path: "**/*.apk"
-          if-no-files-found: ignore
+          name: cap-relay-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+          if-no-files-found: error
