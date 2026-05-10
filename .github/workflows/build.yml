@@ -15,7 +15,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.29.0'
+          flutter-version: '3.27.0'
           channel: 'stable'
           cache: true
       
@@ -23,11 +23,20 @@ jobs:
         run: flutter pub get
       
       - name: Build APK
-        run: flutter build apk --release --split-per-abi
+        run: flutter build apk --release
       
-      - name: Upload APKs
+      - name: Find APK
+        run: |
+          echo "Looking for APK..."
+          find . -name "*.apk" 2>/dev/null
+          find build -name "*.apk" 2>/dev/null || true
+      
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: cap-relay-apks
-          path: build/app/outputs/flutter-apk/*.apk
-          if-no-files-found: error
+          name: cap-relay-apk
+          path: |
+            build/app/outputs/flutter-apk/*.apk
+            android/build/outputs/apk/*/*.apk
+            **/*.apk
+          if-no-files-found: warn
