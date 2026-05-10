@@ -1,0 +1,23 @@
+name: cap_relay
+description: CAP Relay - Local AI API relay with auto-failover
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.0
+  shelf: ^1.4.0
+  shelf_router: ^1.1.0
+  provider: ^6.1.0
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
