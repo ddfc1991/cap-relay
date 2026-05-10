@@ -22,21 +22,17 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       
-      - name: Build APK
-        run: flutter build apk --release
-      
-      - name: Find APK
+      - name: Run Gradle directly
         run: |
-          echo "Looking for APK..."
-          find . -name "*.apk" 2>/dev/null
-          find build -name "*.apk" 2>/dev/null || true
+          cd android
+          ./gradlew assembleRelease --no-daemon --stacktrace 2>&1 | tail -50
       
-      - name: Upload APK
+      - name: Find any APKs
+        run: find . -name "*.apk" -type f 2>/dev/null
+      
+      - name: Upload if exists
         uses: actions/upload-artifact@v4
         with:
-          name: cap-relay-apk
-          path: |
-            build/app/outputs/flutter-apk/*.apk
-            android/build/outputs/apk/*/*.apk
-            **/*.apk
-          if-no-files-found: warn
+          name: apks
+          path: "**/*.apk"
+          if-no-files-found: ignore
