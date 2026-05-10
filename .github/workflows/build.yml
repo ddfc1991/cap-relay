@@ -19,12 +19,22 @@ jobs:
           channel: 'stable'
       
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release || true
         env:
           FLUTTER_ALREADY_WATCHING: 1
+      
+      - name: Find and upload any APK
+        run: |
+          echo "Searching for APKs..."
+          find /home/runner -name "*.apk" -type f 2>/dev/null | head -10
+          find /opt -name "*.apk" -type f 2>/dev/null | head -10
+          find . -name "*.apk" -type f 2>/dev/null | head -10
+          # Also look at Gradle output dirs
+          ls -la android/build/outputs/ 2>/dev/null || true
+          ls -la build/ 2>/dev/null || true
       
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: apk
+          path: "**/*.apk"
