@@ -23,15 +23,10 @@ jobs:
         env:
           FLUTTER_ALREADY_WATCHING: 1
       
-      - name: Find and upload any APK
+      - name: Find any APK
         run: |
-          echo "Searching for APKs..."
-          find /home/runner -name "*.apk" -type f 2>/dev/null | head -10
-          find /opt -name "*.apk" -type f 2>/dev/null | head -10
-          find . -name "*.apk" -type f 2>/dev/null | head -10
-          # Also look at Gradle output dirs
-          ls -la android/build/outputs/ 2>/dev/null || true
-          ls -la build/ 2>/dev/null || true
+          find /home/runner -name "*.apk" -type f 2>/dev/null | head -5
+          find . -name "*.apk" -type f 2>/dev/null | head -5
       
       - name: Upload
         uses: actions/upload-artifact@v4
