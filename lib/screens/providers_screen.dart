@@ -16,7 +16,7 @@ class ProvidersScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Providers'),
+        title: const Text('供应商'),
         centerTitle: true,
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
@@ -28,7 +28,7 @@ class ProvidersScreen extends StatelessWidget {
           if (context.mounted) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Exhausted providers reset'),
+                content: Text('已重置所有耗尽供应商'),
                 behavior: SnackBarBehavior.floating,
               ),
             );
@@ -47,14 +47,14 @@ class ProvidersScreen extends StatelessWidget {
                               size: 64, color: colorScheme.onSurfaceVariant),
                           const SizedBox(height: 16),
                           Text(
-                            'No providers configured',
+                            '未配置供应商',
                             style: TextStyle(
                                 color: colorScheme.onSurfaceVariant,
                                 fontSize: 16),
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Tap + to add a custom provider',
+                            '点 + 添加自定义供应商',
                             style: TextStyle(
                                 color:
                                     colorScheme.onSurfaceVariant.withOpacity(0.7),
@@ -117,7 +117,7 @@ class ProvidersScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: const Text('取消'),
           ),
           FilledButton(
             onPressed: () {
@@ -125,12 +125,12 @@ class ProvidersScreen extends StatelessWidget {
               Navigator.pop(ctx);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('API key updated'),
+                  content: Text('API密钥已更新'),
                   behavior: SnackBarBehavior.floating,
                 ),
               );
             },
-            child: const Text('Save'),
+            child: const Text('保存'),
           ),
         ],
       ),
@@ -145,12 +145,12 @@ class ProvidersScreen extends StatelessWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('Delete Provider'),
-        content: Text('Remove "${provider.name}" from providers?'),
+        title: const Text('删除供应商'),
+        content: Text('确定删除 "${provider.name}"？'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: const Text('取消'),
           ),
           FilledButton(
             onPressed: () {
@@ -186,7 +186,7 @@ class ProvidersScreen extends StatelessWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('Add Custom Provider'),
+        title: const Text('添加自定义供应商'),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -194,9 +194,9 @@ class ProvidersScreen extends StatelessWidget {
               TextField(
                 controller: nameCtrl,
                 decoration: const InputDecoration(
-                  labelText: 'Name',
+                  labelText: '名称',
                   border: OutlineInputBorder(),
-                  hintText: 'e.g. My Provider',
+                  hintText: '例如：我的供应商',
                 ),
               ),
               const SizedBox(height: 12),
@@ -212,7 +212,7 @@ class ProvidersScreen extends StatelessWidget {
               TextField(
                 controller: modelCtrl,
                 decoration: const InputDecoration(
-                  labelText: 'Models (comma-separated)',
+                  labelText: '模型（逗号分隔）',
                   border: OutlineInputBorder(),
                   hintText: 'model-1, model-2',
                 ),
@@ -221,7 +221,7 @@ class ProvidersScreen extends StatelessWidget {
               TextField(
                 controller: apiKeyCtrl,
                 decoration: const InputDecoration(
-                  labelText: 'API Key (optional)',
+                  labelText: 'API密钥（可选）',
                   border: OutlineInputBorder(),
                   hintText: 'sk-...',
                 ),
@@ -233,7 +233,7 @@ class ProvidersScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: const Text('取消'),
           ),
           FilledButton(
             onPressed: () {
@@ -273,7 +273,7 @@ class ProvidersScreen extends StatelessWidget {
               Navigator.pop(ctx);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('Provider "$name" added'),
+                  content: Text('供应商 "$name" 已添加'),
                   behavior: SnackBarBehavior.floating,
                 ),
               );
@@ -316,7 +316,7 @@ class _ProviderListItem extends StatelessWidget {
         statusLabel = '活跃';
       case ProviderStatus.quotaExhausted:
         statusColor = Colors.orangeAccent;
-        statusLabel = 'Exhausted';
+        statusLabel = '已耗尽';
       case ProviderStatus.error:
         statusColor = Colors.redAccent;
         statusLabel = '错误';
@@ -409,7 +409,7 @@ class _ProviderListItem extends StatelessWidget {
                             const SizedBox(width: 8),
                             _infoChip(
                               Icons.vpn_key_rounded,
-                              'Key set',
+                              '密钥已设置',
                               colorScheme,
                               labelColor: Colors.blueAccent,
                             ),

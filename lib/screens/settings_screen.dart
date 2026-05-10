@@ -16,7 +16,7 @@ class SettingsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: const Text('设置'),
         centerTitle: true,
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
@@ -42,7 +42,7 @@ class SettingsScreen extends StatelessWidget {
                           color: colorScheme.primary, size: 24),
                       const SizedBox(width: 10),
                       Text(
-                        'Server Port',
+                        '服务器端口',
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -57,7 +57,7 @@ class SettingsScreen extends StatelessWidget {
                     ),
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Port number',
+                      labelText: '端口号',
                       hintText: '8317',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -70,14 +70,14 @@ class SettingsScreen extends StatelessWidget {
                         appState.updatePort(port);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Port updated to $port'),
+                            content: Text('端口已更新为 $port'),
                             behavior: SnackBarBehavior.floating,
                           ),
                         );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: const Text('Invalid port number (1-65535)'),
+                            content: const Text('端口号无效（1-65535）'),
                             behavior: SnackBarBehavior.floating,
                             backgroundColor: colorScheme.error,
                           ),
@@ -87,7 +87,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Default: 8317. Restart the server for the change to take effect.',
+                    '默认8317，重启服务器后生效',
                     style: TextStyle(
                       fontSize: 12,
                       color: colorScheme.onSurfaceVariant,
@@ -117,14 +117,14 @@ class SettingsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Auto-Failover',
+                          '自动切换',
                           style: theme.textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         const SizedBox(height: 2),
                         Text(
-                          'Automatically switch to next available provider on failure',
+                          '故障时自动切换到下一个可用供应商',
                           style: TextStyle(
                             fontSize: 12,
                             color: colorScheme.onSurfaceVariant,
@@ -172,7 +172,7 @@ class SettingsScreen extends StatelessWidget {
                             _showAddApiKeyDialog(context, appState),
                         icon: Icon(Icons.add_circle_rounded,
                             color: colorScheme.primary),
-                        tooltip: 'Add API key',
+                        tooltip: '添加API密钥',
                       ),
                     ],
                   ),
@@ -181,7 +181,7 @@ class SettingsScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Text(
-                        'No global API keys stored',
+                        '未存储全局API密钥',
                         style: TextStyle(
                           color: colorScheme.onSurfaceVariant,
                           fontSize: 14,
@@ -214,7 +214,7 @@ class SettingsScreen extends StatelessWidget {
                               icon: Icon(Icons.remove_circle_outline_rounded,
                                   size: 20,
                                   color: colorScheme.error),
-                              tooltip: 'Remove key',
+                              tooltip: '删除密钥',
                               padding: EdgeInsets.zero,
                               constraints: const BoxConstraints(),
                             ),
@@ -245,7 +245,7 @@ class SettingsScreen extends StatelessWidget {
                           color: colorScheme.primary, size: 24),
                       const SizedBox(width: 10),
                       Text(
-                        'Provider Keys',
+                        '供应商密钥',
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -254,7 +254,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Set individual API keys for each provider from the Providers tab.',
+                    '在供应商页面为每个供应商单独设置API密钥',
                     style: TextStyle(
                       fontSize: 13,
                       color: colorScheme.onSurfaceVariant,
@@ -284,7 +284,7 @@ class SettingsScreen extends StatelessWidget {
                           ),
                           const Spacer(),
                           Text(
-                            hasKey ? 'Key set' : 'No key',
+                            hasKey ? '密钥已设置' : '无密钥',
                             style: TextStyle(
                               fontSize: 12,
                               color: colorScheme.onSurfaceVariant,
@@ -326,26 +326,26 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   _aboutRow(
-                    'CAP Relay',
+                    'CAP 中转',
                     'v1.0.0',
                     colorScheme,
                   ),
                   const SizedBox(height: 6),
                   _aboutRow(
-                    'Description',
+                    '说明',
                     'A local API relay/middleware for AI providers with auto-failover',
                     colorScheme,
                   ),
                   const SizedBox(height: 6),
                   _aboutRow(
-                    'Providers configured',
+                    '已配置供应商',
                     '${appState.providers.length}',
                     colorScheme,
                   ),
                   const SizedBox(height: 6),
                   _aboutRow(
-                    'Server status',
-                    appState.serverRunning ? 'Running' : 'Stopped',
+                    '服务器状态',
+                    appState.serverRunning ? '运行中' : '已停止',
                     colorScheme,
                     valueColor: appState.serverRunning
                         ? Colors.greenAccent
@@ -365,8 +365,8 @@ class SettingsScreen extends StatelessWidget {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            'Configure providers and API keys in the Providers tab,'
-                            ' then start the server from the Dashboard.',
+                            '在供应商页面配置供应商和API密钥，'
+                            '然后在仪表盘启动服务器。',
                             style: TextStyle(
                               fontSize: 12,
                               color: colorScheme.tertiary,
@@ -427,11 +427,11 @@ class SettingsScreen extends StatelessWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: const Text('Add API Key'),
+        title: const Text('添加API密钥'),
         content: TextField(
           controller: controller,
           decoration: const InputDecoration(
-            labelText: 'API Key',
+            labelText: 'API密钥',
             border: OutlineInputBorder(),
             hintText: 'sk-...',
           ),
@@ -440,7 +440,7 @@ class SettingsScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: const Text('取消'),
           ),
           FilledButton(
             onPressed: () {
@@ -450,7 +450,7 @@ class SettingsScreen extends StatelessWidget {
                 Navigator.pop(ctx);
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('API key added'),
+                    content: Text('API密钥已添加'),
                     behavior: SnackBarBehavior.floating,
                   ),
                 );

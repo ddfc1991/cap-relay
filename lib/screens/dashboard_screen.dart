@@ -17,7 +17,7 @@ class DashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CAP Relay'),
+        title: const Text('CAP 中转'),
         centerTitle: true,
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
@@ -71,7 +71,7 @@ class DashboardScreen extends StatelessWidget {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Server started'),
+            content: Text('服务器已启动'),
             behavior: SnackBarBehavior.floating,
           ),
         );
@@ -80,7 +80,7 @@ class DashboardScreen extends StatelessWidget {
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Failed to start server: $e'),
+            content: Text('启动失败: $e'),
             behavior: SnackBarBehavior.floating,
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
@@ -94,7 +94,7 @@ class DashboardScreen extends StatelessWidget {
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Server stopped'),
+          content: Text('服务器已停止'),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -189,7 +189,7 @@ class _ServerStatusCard extends StatelessWidget {
                     size: 18, color: colorScheme.onSurfaceVariant),
                 const SizedBox(width: 6),
                 Text(
-                  'Port: $port',
+                  '端口: $port',
                   style: TextStyle(
                     color: colorScheme.onSurfaceVariant,
                     fontSize: 14,
@@ -203,7 +203,7 @@ class _ServerStatusCard extends StatelessWidget {
               child: FilledButton.icon(
                 onPressed: serverRunning ? onStop : onStart,
                 icon: Icon(serverRunning ? Icons.stop_rounded : Icons.play_arrow_rounded),
-                label: Text(serverRunning ? 'Stop Server' : 'Start Server'),
+                label: Text(serverRunning ? '停止服务器' : '启动服务器'),
                 style: FilledButton.styleFrom(
                   backgroundColor: serverRunning
                       ? colorScheme.error
@@ -302,7 +302,7 @@ class _ActiveProviderCard extends StatelessWidget {
               ),
             ] else ...[
               Text(
-                'No provider configured',
+                '未配置供应商',
                 style: TextStyle(color: colorScheme.onSurfaceVariant),
               ),
             ],
@@ -373,7 +373,7 @@ class _RequestCounterCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Requests',
+                  '请求数',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -387,7 +387,7 @@ class _RequestCounterCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '$logCount logged',
+                  '已记录 $logCount 条',
                   style: TextStyle(
                     color: colorScheme.onSurfaceVariant,
                     fontSize: 13,
@@ -450,7 +450,7 @@ class _ProviderHealthCard extends StatelessWidget {
             const SizedBox(height: 16),
             if (providers.isEmpty)
               Text(
-                'No providers configured',
+                '未配置供应商',
                 style: TextStyle(color: colorScheme.onSurfaceVariant),
               )
             else
@@ -468,13 +468,13 @@ class _ProviderHealthCard extends StatelessWidget {
     switch (status) {
       case ProviderStatus.active:
         dotColor = Colors.greenAccent;
-        statusLabel = 'Active';
+        statusLabel = '活跃';
       case ProviderStatus.quotaExhausted:
         dotColor = Colors.orangeAccent;
-        statusLabel = 'Exhausted';
+        statusLabel = '已耗尽';
       case ProviderStatus.error:
         dotColor = Colors.redAccent;
-        statusLabel = 'Error';
+        statusLabel = '错误';
     }
 
     return Padding(

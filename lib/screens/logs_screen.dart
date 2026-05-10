@@ -50,7 +50,7 @@ class _LogsScreenState extends State<LogsScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Request Logs'),
+        title: const Text('请求日志'),
         centerTitle: true,
         backgroundColor: colorScheme.surface,
         foregroundColor: colorScheme.onSurface,
@@ -62,14 +62,14 @@ class _LogsScreenState extends State<LogsScreen> {
                 appState.clearLogs();
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Logs cleared'),
+                    content: Text('日志已清空'),
                     behavior: SnackBarBehavior.floating,
                   ),
                 );
               },
               icon: Icon(Icons.delete_sweep_rounded,
                   color: colorScheme.onSurfaceVariant),
-              tooltip: 'Clear logs',
+              tooltip: '清空日志',
             ),
         ],
       ),
@@ -82,13 +82,13 @@ class _LogsScreenState extends State<LogsScreen> {
                       size: 64, color: colorScheme.onSurfaceVariant),
                   const SizedBox(height: 16),
                   Text(
-                    'No request logs yet',
+                    '暂无请求日志',
                     style: TextStyle(
                         color: colorScheme.onSurfaceVariant, fontSize: 16),
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Requests will appear here as they are processed',
+                    '请求处理后会显示在这里',
                     style: TextStyle(
                       color: colorScheme.onSurfaceVariant.withOpacity(0.7),
                       fontSize: 13,
@@ -109,7 +109,7 @@ class _LogsScreenState extends State<LogsScreen> {
                           size: 16, color: colorScheme.onSurfaceVariant),
                       const SizedBox(width: 6),
                       Text(
-                        'Auto-scroll',
+                        '自动滚动',
                         style: TextStyle(
                           fontSize: 13,
                           color: colorScheme.onSurfaceVariant,
@@ -294,7 +294,7 @@ class _LogListItem extends StatelessWidget {
 
   String _formatDuration(Duration d) {
     if (d.inMilliseconds < 1000) {
-      return '${d.inMilliseconds}ms';
+      return '${d.inMilliseconds}毫秒';
     }
     return '${(d.inMilliseconds / 1000).toStringAsFixed(1)}s';
   }

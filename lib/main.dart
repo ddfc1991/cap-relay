@@ -17,7 +17,7 @@ void main() async {
   // Determine a suitable storage directory.
   // On Linux/Android this uses the user's home directory or a temp fallback.
   final storageDir = Directory(
-    Platform.environment['HOME'] ??
+    Platform.environment['主页'] ??
         Platform.environment['TMPDIR'] ??
         '/tmp',
   );
@@ -57,7 +57,7 @@ class CapRelayApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // Use a deep vibrant seed color for Material You dynamic colors
     return MaterialApp(
-      title: 'CAP Relay',
+      title: 'CAP 中转',
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
