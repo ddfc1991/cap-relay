@@ -19,15 +19,12 @@ jobs:
           channel: 'stable'
       
       - name: Build APK
-        run: |
-          cd android
-          flutter build apk --release
+        run: flutter build apk --release
+        env:
+          FLUTTER_ALREADY_WATCHING: 1
       
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: |
-            build/app/outputs/flutter-apk/*.apk
-            android/build/outputs/apk/*/*.apk
-            **/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
