@@ -141,22 +141,22 @@ class _MainShellState extends State<MainShell> {
           NavigationDestination(
             icon: Icon(Icons.dashboard_rounded),
             selectedIcon: Icon(Icons.dashboard_rounded),
-            label: 'Dashboard',
+            label: '仪表盘',
           ),
           NavigationDestination(
             icon: Icon(Icons.cloud_rounded),
             selectedIcon: Icon(Icons.cloud_rounded),
-            label: 'Providers',
+            label: '供应商',
           ),
           NavigationDestination(
             icon: Icon(Icons.history_rounded),
             selectedIcon: Icon(Icons.history_rounded),
-            label: 'Logs',
+            label: '日志',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_rounded),
             selectedIcon: Icon(Icons.settings_rounded),
-            label: 'Settings',
+            label: '设置',
           ),
         ],
       ),

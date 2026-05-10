@@ -161,7 +161,7 @@ class SettingsScreen extends StatelessWidget {
                           color: colorScheme.primary, size: 24),
                       const SizedBox(width: 10),
                       Text(
-                        'API Keys',
+                        'API密钥管理',
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -317,7 +317,7 @@ class SettingsScreen extends StatelessWidget {
                           color: colorScheme.primary, size: 24),
                       const SizedBox(width: 10),
                       Text(
-                        'About',
+                        '关于',
                         style: theme.textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.w600,
                         ),

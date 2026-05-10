@@ -88,7 +88,7 @@ class ProvidersScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => _showAddProviderDialog(context),
         icon: const Icon(Icons.add_rounded),
-        label: const Text('Add Provider'),
+        label: const Text('添加供应商'),
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
       ),
@@ -108,7 +108,7 @@ class ProvidersScreen extends StatelessWidget {
         content: TextField(
           controller: controller,
           decoration: const InputDecoration(
-            labelText: 'API Key',
+            labelText: 'API密钥',
             border: OutlineInputBorder(),
             hintText: 'sk-...',
           ),
@@ -167,7 +167,7 @@ class ProvidersScreen extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.error,
               foregroundColor: Theme.of(context).colorScheme.onError,
             ),
-            child: const Text('Delete'),
+            child: const Text('删除'),
           ),
         ],
       ),
@@ -203,7 +203,7 @@ class ProvidersScreen extends StatelessWidget {
               TextField(
                 controller: baseUrlCtrl,
                 decoration: const InputDecoration(
-                  labelText: 'Base URL',
+                  labelText: 基础地址',
                   border: OutlineInputBorder(),
                   hintText: 'https://api.example.com/v1',
                 ),
@@ -313,13 +313,13 @@ class _ProviderListItem extends StatelessWidget {
     switch (status) {
       case ProviderStatus.active:
         statusColor = Colors.greenAccent;
-        statusLabel = 'Active';
+        statusLabel = '活跃';
       case ProviderStatus.quotaExhausted:
         statusColor = Colors.orangeAccent;
         statusLabel = 'Exhausted';
       case ProviderStatus.error:
         statusColor = Colors.redAccent;
-        statusLabel = 'Error';
+        statusLabel = '错误';
     }
 
     return Dismissible(

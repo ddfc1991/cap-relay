@@ -139,7 +139,7 @@ class _ServerStatusCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 12),
                 Text(
-                  'Server Status',
+                  '服务器状态',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -168,7 +168,7 @@ class _ServerStatusCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 6),
                       Text(
-                        serverRunning ? 'Running' : 'Stopped',
+                        serverRunning ? '运行中' : '已停止',
                         style: TextStyle(
                           color: serverRunning
                               ? Colors.greenAccent
@@ -255,7 +255,7 @@ class _ActiveProviderCard extends StatelessWidget {
                     color: colorScheme.primary, size: 28),
                 const SizedBox(width: 12),
                 Text(
-                  'Active Provider',
+                  '当前供应商',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
@@ -440,7 +440,7 @@ class _ProviderHealthCard extends StatelessWidget {
                     color: colorScheme.primary, size: 28),
                 const SizedBox(width: 12),
                 Text(
-                  'Provider Health',
+                  '供应商状态',
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
