@@ -17,27 +17,12 @@ jobs:
         with:
           flutter-version: '3.27.0'
           channel: 'stable'
-          cache: true
       
-      - name: Create local.properties
-        run: |
-          echo "sdk.dir=$ANDROID_HOME" > android/local.properties
-          echo "flutter.sdk=$FLUTTER_ROOT" >> android/local.properties
-          echo "flutter.buildMode=release" >> android/local.properties
+      - name: Build APK
+        run: flutter build apk --release
       
-      - name: Build APK via Gradle
-        run: |
-          cd android
-          ./gradlew assembleRelease --no-daemon -Pverbose=true -Ptarget-platform=android-arm,android-arm64 -Ptarget=lib/main.dart -Pbase-application-name=android.app.Application
-      
-      - name: Find APK
-        run: |
-          find . -name "*.apk" -type f 2>/dev/null
-          find / -name "app-release.apk" -type f 2>/dev/null | head -5
-      
-      - name: Upload APK
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: cap-relay-apk
-          path: "**/*.apk"
-          if-no-files-found: warn
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
